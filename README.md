@@ -18,6 +18,10 @@ The main objective is to represent the professional experience and accomplishmen
 - Spring Boot
 - MySQL
 - HTML5
+- CSS3
+- Angular
+- NodeJS
+- Javascript
 - Docker
 - Git
 ### Instructions
