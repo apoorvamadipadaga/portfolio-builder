@@ -1,0 +1,17 @@
+header {
+    //background: rgb(43, 135, 255);
+    color: black;
+
+    .logo {
+        font-weight: bold;
+        text-align: left;
+        font-size: 1.5em;
+    }
+
+    nav {
+        .container {
+            width: 100%;
+            background: grey;
+        }
+    }
+}
