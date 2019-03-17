@@ -27,4 +27,8 @@ The main objective is to represent the professional experience and accomplishmen
 ### Instructions
 ```
 mvn spring-boot:run
+
+## If using docker
+docker-compose up
+docker-compose down
 ```
