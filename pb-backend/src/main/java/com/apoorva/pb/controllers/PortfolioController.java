@@ -31,9 +31,6 @@ public class PortfolioController {
     
     @PostMapping("/api/portfolios")
     public @ResponseBody Portfolio createPortfolio(@RequestBody Portfolio portfolio) {
-        portfolio.getSkills().forEach(s -> s.setPortfolio(portfolio));
-        portfolio.getAchievements().forEach(a -> a.setPortfolio(portfolio));
-        portfolio.getProjects().forEach(p -> p.setPortfolio(portfolio));
         portfolioRepository.save(portfolio);
         return portfolio;
     }

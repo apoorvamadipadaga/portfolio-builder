@@ -17,7 +17,7 @@ services:
     build: .
     working_dir: /app
     volumes:
-      - ./:/app
+      - ./pb-backend:/app
       - ~/.m2:/root/.m2
     expose:
       - '8080'
