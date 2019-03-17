@@ -116,6 +116,7 @@ public class Portfolio {
     }
 
     public void setAchievements(List<Achievement> achievements) {
+        achievements.forEach(a -> a.setPortfolio(this));
         this.achievements = achievements;
     }
 
@@ -124,6 +125,7 @@ public class Portfolio {
     }
 
     public void setSkills(List<Skill> skills) {
+        skills.forEach(s -> s.setPortfolio(this));
         this.skills = skills;
     }
 
@@ -132,6 +134,7 @@ public class Portfolio {
     }
 
     public void setProjects(List<Project> projects) {
+        projects.forEach(p -> p.setPortfolio(this));
         this.projects = projects;
     }
 
