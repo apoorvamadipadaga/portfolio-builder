@@ -15,8 +15,9 @@ public class Project {
     private String description;
     private String startDate;
     private String endDate;
+    
     @ManyToOne
-    @JoinColumn(name="pid")
+    @JoinColumn
     private Portfolio portfolio;
 
     /**

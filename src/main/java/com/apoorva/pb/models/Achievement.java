@@ -12,8 +12,9 @@ public class Achievement {
     @GeneratedValue
     private Integer id;
     private String achievement;
+    
     @ManyToOne
-    @JoinColumn(name="pid")
+    @JoinColumn
     private Portfolio portfolio;
 
     /**

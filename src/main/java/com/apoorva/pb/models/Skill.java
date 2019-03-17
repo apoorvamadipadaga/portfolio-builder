@@ -12,8 +12,9 @@ public class Skill {
     @GeneratedValue
     private Integer id;
     private String skillname;
+
     @ManyToOne
-    @JoinColumn(name="pid")
+    @JoinColumn
     private Portfolio portfolio;
 
     /**
@@ -46,6 +47,14 @@ public class Skill {
 
     public Skill(){
 
+    }
+
+    public Portfolio getPortfolio() {
+        return portfolio;
+    }
+
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
     }
     
     public Skill(Integer id, String skillname){

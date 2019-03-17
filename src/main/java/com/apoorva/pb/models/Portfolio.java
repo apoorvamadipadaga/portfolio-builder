@@ -2,12 +2,12 @@ package com.apoorva.pb.models;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-
-
 
 @Entity
 public class Portfolio {
@@ -15,15 +15,16 @@ public class Portfolio {
     @GeneratedValue
     private Integer id;
     private Integer pin;
+    @Column(unique=true)
     private String uname;
     private String name;
     private String header;
     private String description;
-    @OneToMany(mappedBy = "portfolio")
+    @OneToMany(mappedBy = "portfolio", cascade=CascadeType.ALL)
     private List<Achievement> achievements;
-    @OneToMany(mappedBy = "portfolio")
+    @OneToMany(mappedBy = "portfolio", cascade=CascadeType.ALL)
     private List<Skill> skills;
-    @OneToMany(mappedBy = "portfolio")
+    @OneToMany(mappedBy = "portfolio", cascade=CascadeType.ALL)
     private List<Project> projects;
 
     /**
@@ -110,6 +111,30 @@ public class Portfolio {
 		this.description = description;
     }
 
+    public List<Achievement> getAchievements() {
+        return achievements;
+    }
+
+    public void setAchievements(List<Achievement> achievements) {
+        this.achievements = achievements;
+    }
+
+    public List<Skill> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(List<Skill> skills) {
+        this.skills = skills;
+    }
+
+    public List<Project> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<Project> projects) {
+        this.projects = projects;
+    }
+
     public Portfolio(){
 
     }
@@ -119,14 +144,16 @@ public class Portfolio {
         Integer pin,
         String name,
         String header,
-        String description){
+        String description,
+        List<Skill> skills){
             this.id=id;
             this.uname=uname;
             this.pin=pin;
             this.name=name;
             this.header=header;
             this.description=description;
-        
+            this.skills = skills;
+            this.skills.forEach(x -> x.setPortfolio(this));    
     }
 }
 

@@ -4,7 +4,7 @@ services:
     image: mysql:5.7
     restart: always
     environment:
-      MYSQL_DATABASE: 'pb_database'
+      MYSQL_DATABASE: 'pb_db'
       MYSQL_USER: 'pbuser'
       MYSQL_PASSWORD: 'password'
       MYSQL_ROOT_PASSWORD: 'password'
@@ -27,5 +27,7 @@ services:
     depends_on:
       - db
     environment:
-      - DATABASE_HOST=db
-      - DATABASE_PORT=3306
+      - MYSQL_HOST=db
+      - MYSQL_PORT=3306
+      - MYSQL_USERNAME=pbuser
+      - MYSQL_PASSWORD=password
