@@ -1,6 +1,8 @@
 package com.apoorva.pb.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -15,9 +17,8 @@ public class Project {
     private String description;
     private String startDate;
     private String endDate;
-    
-    @ManyToOne
-    @JoinColumn
+    @ManyToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @JoinColumn (name="pid")
     private Portfolio portfolio;
 
     /**
@@ -88,6 +89,10 @@ public class Project {
 	 */
 	public void setEndDate(String endDate) {
 		this.endDate = endDate;
+    }
+
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
     }
 
     public Project(){

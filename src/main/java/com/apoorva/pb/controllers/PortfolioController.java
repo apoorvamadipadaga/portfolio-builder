@@ -11,24 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Optional;
 
 import com.apoorva.pb.models.Portfolio;
-import com.apoorva.pb.repositories.AchievementRepository;
 import com.apoorva.pb.repositories.PortfolioRepository;
-import com.apoorva.pb.repositories.ProjectRepository;
-import com.apoorva.pb.repositories.SkillRepository;
 
 @RestController
 public class PortfolioController {
 	@Autowired
     private PortfolioRepository portfolioRepository;
-    
-    @Autowired
-    private SkillRepository skillRpository;
-
-    @Autowired
-    private AchievementRepository achivementRepository;
-
-    @Autowired
-    private ProjectRepository projectRepository;
 
 	@GetMapping("/api/portfolios")
 	public @ResponseBody Iterable<Portfolio> getAllPortfolios() {
@@ -38,14 +26,14 @@ public class PortfolioController {
     @GetMapping("/api/portfolios/{uname}")
     public @ResponseBody Optional<Portfolio> getPortfolio(@PathVariable String uname) {
         Optional<Portfolio> portfolio = portfolioRepository.findByUname(uname); 
-        if(portfolio != null) {
-            //portfolio.get().setSkills(skillRpository.findByPortfolio(portfolio.get()));
-        }      
         return portfolio;
     }
     
     @PostMapping("/api/portfolios")
     public @ResponseBody Portfolio createPortfolio(@RequestBody Portfolio portfolio) {
+        portfolio.getSkills().forEach(s -> s.setPortfolio(portfolio));
+        portfolio.getAchievements().forEach(a -> a.setPortfolio(portfolio));
+        portfolio.getProjects().forEach(p -> p.setPortfolio(portfolio));
         portfolioRepository.save(portfolio);
         return portfolio;
     }

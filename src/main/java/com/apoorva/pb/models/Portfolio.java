@@ -144,16 +144,13 @@ public class Portfolio {
         Integer pin,
         String name,
         String header,
-        String description,
-        List<Skill> skills){
+        String description){
             this.id=id;
             this.uname=uname;
             this.pin=pin;
             this.name=name;
             this.header=header;
             this.description=description;
-            this.skills = skills;
-            this.skills.forEach(x -> x.setPortfolio(this));    
     }
 }
 

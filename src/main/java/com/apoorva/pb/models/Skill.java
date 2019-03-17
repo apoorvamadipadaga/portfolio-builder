@@ -1,6 +1,8 @@
 package com.apoorva.pb.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -11,11 +13,10 @@ public class Skill {
     @Id
     @GeneratedValue
     private Integer id;
-    private String skillname;
-
-    @ManyToOne
-    @JoinColumn
+    @ManyToOne(optional = false, fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+    @JoinColumn (name="pid")
     private Portfolio portfolio;
+    private String skillname;
 
     /**
      * @return the id
@@ -45,16 +46,12 @@ public class Skill {
 		this.skillname = skillname;
     }
 
-    public Skill(){
-
-    }
-
-    public Portfolio getPortfolio() {
-        return portfolio;
-    }
-
     public void setPortfolio(Portfolio portfolio) {
         this.portfolio = portfolio;
+    }
+
+    public Skill(){
+
     }
     
     public Skill(Integer id, String skillname){
