@@ -39,11 +39,13 @@ services:
   #     - ./pb-frontend:/app
   #   expose:
   #     - '4200'
+  #     - '49153'
   #   ports:
   #     - '4200:4200'
-  #   command: ng build
+  #     - '4201:49153'
   #   depends_on:
   #     - api
+  #   command: "npm start"
   #   environment:
   #     - API_HOST=api
   #     - API_PORT=8080

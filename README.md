@@ -31,4 +31,12 @@ mvn spring-boot:run
 ## If using docker
 docker-compose up
 docker-compose down
+
+## To start frontend
+npm i -g @angular/cli
+npm i --save-dev @angular-devkit/build-angular
+cd pb-frontend
+ng serve
+
+## Browse to http://localhost:4200
 ```

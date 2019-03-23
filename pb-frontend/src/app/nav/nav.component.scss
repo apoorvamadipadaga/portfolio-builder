@@ -5,13 +5,35 @@ header {
     .logo {
         font-weight: bold;
         text-align: left;
-        font-size: 1.5em;
+        font-size: 2em;
+        text-align: center;
     }
+}
 
-    nav {
-        .container {
-            width: 100%;
-            background: grey;
+nav {
+    justify-self: center;
+    height: 2em;
+    border-top: 0.09em solid rgb(226, 226, 226);
+    border-bottom: 0.09em solid rgb(226, 226, 226);
+    padding-top: 0.5em;
+
+    ul {
+        list-style-type: none;
+        margin: 0; padding: 0;
+
+        li {
+            float: left;
+
+            a {
+                padding: 1.5em;
+                text-transform: uppercase;
+                font-size: .9em;
+                color: black;
+
+                &:hover {
+                    color: rgb(43, 128, 255);
+                }
+            }
         }
     }
 }
