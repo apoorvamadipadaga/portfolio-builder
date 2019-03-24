@@ -41,6 +41,23 @@ textarea {
     }
 }
 
+.grp {
+    display: block;
+    height: 3em;
+    padding-bottom: 2em;
+
+    input {
+        display: inline-block;
+        width: 2em;
+        height: 1.2em;
+    }
+
+    img {
+        padding-top: 1em;
+        padding-right: 2em;
+    }
+}
+
 .cta {
     background: rgb(43, 128, 255);
     border: none;

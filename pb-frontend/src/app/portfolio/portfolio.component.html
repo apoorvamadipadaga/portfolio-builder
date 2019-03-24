@@ -1,4 +1,9 @@
-<div class="container portfolio">
+<div class="container portfolio style-1" [ngClass]="{
+  'style-1': portfolio.theme == 1,
+  'style-2': portfolio.theme == 2,
+  'style-3': portfolio.theme == 3,
+  'style-4': portfolio.theme == 4
+}">
   <div class="phead">
     <div class="ptitle">{{ portfolio.name }}</div>
     <div class="pstitle">{{ portfolio.header }}</div>

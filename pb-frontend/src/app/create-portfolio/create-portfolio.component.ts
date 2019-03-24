@@ -23,6 +23,8 @@ export class CreatePortfolioComponent implements OnInit {
     this.portfolioForm = this.formBuilder.group({
       name: ['', Validators.required],
       uname: ['', Validators.required],
+      header: ['', Validators.required],
+      theme: ['', [Validators.required, Validators.pattern('[1-4]{1}')]],
       pin: ['', [Validators.required, Validators.pattern('[0-9]{4}')]],
       description: ['', [Validators.required, Validators.min(30), Validators.max(200)]],
       skills: this.formBuilder.array([

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container wrapper">
 
   <h1>Create Portfolio</h1>
 
@@ -32,6 +32,14 @@
         <div *ngIf="portfolioForm.controls.pin.errors.pattern">User PIN should consist of only 4 numbers</div>
       </div>
     </label>
+    
+    <label>
+        Subtitle:
+        <input type="text" formControlName="header">
+        <div *ngIf="submitted && portfolioForm.controls.header.errors" class="error">
+          <div *ngIf="portfolioForm.controls.header.errors.required">Subtitle is required</div>
+        </div>
+      </label>
 
     <label>
       Summary:
@@ -42,6 +50,19 @@
         <div *ngIf="portfolioForm.controls.description.errors.max">Summary can have a maximum of 200 characters</div>
       </div>
     </label>
+
+    <label>
+        Theme:
+        <div class="grp">
+            <input type="radio" value="1" formControlName="theme"> <img src="../../assets/bg-1.jpg" width="30" height="30">
+            <input type="radio" value="2" formControlName="theme"> <img src="../../assets/bg-2.jpg" width="30" height="30">
+            <input type="radio" value="3" formControlName="theme"> <img src="../../assets/bg-3.jpg" width="30" height="30">
+            <input type="radio" value="4" formControlName="theme"> <img src="../../assets/bg-4.jpg" width="30" height="30">
+        </div>
+        <div *ngIf="submitted && portfolioForm.controls.theme.errors" class="error">
+          <div *ngIf="portfolioForm.controls.theme.errors.required">Theme selection is required</div>
+        </div>
+      </label>
 
     <div formArrayName="skills">
       <h3>Skills</h3>
