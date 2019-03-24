@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'create-portfolio', component: CreatePortfolioComponent},
   { path: 'edit-portfolio/:uname', component: EditPortfolioComponent},
   { path: 'portfolio/:uname', component: PortfolioComponent},
-  { path: 'about', component: AboutComponent}
+  { path: 'instructions', component: AboutComponent}
 ];
 
 @NgModule({
