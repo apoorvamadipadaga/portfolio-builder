@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { ActivatedRoute } from '@angular/router';
+import { Portfolio } from '../shared/models/portfolio.model';
 
 @Component({
   selector: 'app-portfolio',
@@ -9,13 +10,16 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PortfolioComponent implements OnInit {
 
-  portfolio: Object;
+  portfolio: Portfolio;
 
-  constructor(private data: DataService, private route:ActivatedRoute) { }
+  constructor(private data: DataService, private route:ActivatedRoute) { 
+    this.portfolio = new Portfolio();
+  }
 
   ngOnInit() {
-    this.data.getPortfolio(this.route.snapshot.paramMap.get('uname')).subscribe(data => {
-      this.portfolio = data;
+    var uname = this.route.snapshot.paramMap.get('uname');
+    this.data.getPortfolio(uname).subscribe(data => {
+      this.portfolio = new Portfolio().deserialize(data);
       console.log(this.portfolio);
     });
   }

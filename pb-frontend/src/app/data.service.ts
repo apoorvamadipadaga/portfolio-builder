@@ -5,11 +5,16 @@ import { Portfolio } from './shared/models/portfolio.model';
 @Injectable({
   providedIn: 'root'
 })
+
 export class DataService {
 
   constructor(private http: HttpClient) { }
 
-  getPortfolio(uname: String) {
+  getPortfolio(uname: string) {
     return this.http.get("http://localhost:8080/api/portfolios/" + uname);
+  }
+
+  createPortfolio(portfolio: Portfolio) {
+    return this.http.post("http://localhost:8080/api/portfolios", portfolio);
   }
 }
