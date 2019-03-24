@@ -26,14 +26,15 @@
       <input type="text" formControlName="pin">
       <div *ngIf="submitted && portfolioForm.controls.pin.errors" class="error">
         <div *ngIf="portfolioForm.controls.pin.errors.required">User PIN is required</div>
+        <div *ngIf="portfolioForm.controls.pin.errors.pattern">User PIN should consist of only 4 numbers</div>
       </div>
     </label>
 
     <label>
-      Description:
-      <textarea formControlName="description"></textarea>
+      Summary:
+      <textarea formControlName="description" rows="7"></textarea>
       <div *ngIf="submitted && portfolioForm.controls.description.errors" class="error">
-        <div *ngIf="portfolioForm.controls.description.errors.required">Description is required</div>
+        <div *ngIf="portfolioForm.controls.description.errors.required">Summary is required</div>
       </div>
     </label>
 
@@ -73,11 +74,11 @@
             Title:
             <input type="text" formControlName="title">
             Description:
-            <textarea formControlName="description"></textarea>
+            <textarea formControlName="description" rows="7"></textarea>
             Start Date:
-            <input type="text" formControlName="startDate">
+            <input type="date" formControlName="startDate">
             End Date:
-            <input type="text" formControlName="endDate">
+            <input type="date" formControlName="endDate">
           </div>
           <hr>
         </label>
