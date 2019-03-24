@@ -40,3 +40,4 @@ ng serve
 
 ## Browse to http://localhost:4200
 ```
+ng g c "name_of_the_component"
