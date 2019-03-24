@@ -2,9 +2,22 @@
 
   <h2>Create Portfolio</h2>
 
-  <div *ngIf="submitted">
-    <p>{{ message }}</p>
+  <div *ngIf="submitted && success" class="confirmation">
+    <h4>Congratulations! Your profile has been created</h4>
+    Below are the details
+    <p>
+      <br>
+      <b>Portfolio link: </b> <a href="{{ portfolioLink }}">{{ portfolioLink }}</a>
+      <br>
+      <b>Update link: </b> <a href="{{ portfolioUpdateLink }}">{{ portfolioUpdateLink }}</a>
+      <br>
+      <b>PIN: </b> {{ pin }}
+    </p>
+    <br>
     <a href="{{uname}}" class="cta" *ngIf="success">Go to my portfolio</a>
+  </div>
+  <div *ngIf="submitted && !success" class="failure">
+    <p> {{ message }} </p>
   </div>
 
   <form [formGroup]="portfolioForm" (ngSubmit)="onSubmit()" *ngIf="!success">

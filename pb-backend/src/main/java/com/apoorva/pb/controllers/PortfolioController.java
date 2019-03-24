@@ -45,7 +45,7 @@ public class PortfolioController {
     public @ResponseBody Optional<Portfolio> updatePortfolio(@RequestBody Portfolio portfolio, @PathVariable String uname) {
         Optional<Portfolio> result = portfolioRepository.findByUnameAndPin(uname, portfolio.getPin()); 
         if(result.isPresent()) {
-            
+            portfolio.setUname(uname);
             portfolioRepository.delete(result.get());
             portfolioRepository.save(portfolio);
             

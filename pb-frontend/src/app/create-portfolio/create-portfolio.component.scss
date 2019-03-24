@@ -45,6 +45,22 @@ textarea {
     }
 }
 
+.confirmation {
+    text-align: center;
+
+    p {
+        text-align: left;
+        margin-left: 24em;
+    }
+}
+
+.failure {
+    padding: 1em;
+    background-color: red;
+    color: white;
+    margin: 1em;
+}
+
 .grp {
     display: block;
     height: 3em;

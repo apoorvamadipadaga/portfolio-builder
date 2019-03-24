@@ -20,6 +20,8 @@ export class EditPortfolioComponent implements OnInit {
   message: string;
   uname = this.route.snapshot.paramMap.get('uname');
   portfolio: Portfolio;
+  portfolioLink: string;
+  portfolioUpdateLink: string;
 
   constructor(private formBuilder: FormBuilder, private data: DataService, private route:ActivatedRoute) { }
 
@@ -164,7 +166,8 @@ export class EditPortfolioComponent implements OnInit {
         if (p.id > 0) {
           this.success = true;
           this.message = 'Profile updated successfully';
-          this.uname = 'http://localhost:4200/portfolio/' + p.uname;
+          this.portfolioLink = 'http://localhost:4200/portfolio/' + p.uname;
+          this.portfolioUpdateLink = this.portfolioLink + '/edit';
         }
       }
     }, (err: HttpErrorResponse) => {

@@ -1,117 +1,128 @@
 <div class="container wrapper">
 
-    <h2>Edit Portfolio</h2>
-  
-    <div *ngIf="submitted">
-      <p>{{ message }}</p>
-      <a href="{{uname}}" class="cta" *ngIf="success">Go to my portfolio</a>
-    </div>
-  
-    <form [formGroup]="portfolioForm" (ngSubmit)="onSubmit()" *ngIf="!success">
-      <label>
-        Name:
-        <input type="text" formControlName="name">
-        <div *ngIf="submitted && portfolioForm.controls.name.errors" class="error">
-          <div *ngIf="portfolioForm.controls.name.errors.required">Your name is required</div>
-        </div>
-      </label>
-  
-      <label>
-        User PIN:
-        <input type="text" formControlName="pin">
-        <div *ngIf="submitted && portfolioForm.controls.pin.errors" class="error">
-          <div *ngIf="portfolioForm.controls.pin.errors.required">User PIN is required</div>
-          <div *ngIf="portfolioForm.controls.pin.errors.pattern">User PIN should consist of only 4 numbers</div>
-        </div>
-      </label>
-      
-      <label>
-          Subtitle:
-          <input type="text" formControlName="header">
-          <div *ngIf="submitted && portfolioForm.controls.header.errors" class="error">
-            <div *ngIf="portfolioForm.controls.header.errors.required">Subtitle is required</div>
-          </div>
-        </label>
-  
-      <label>
-        Summary:
-        <textarea formControlName="description" rows="7"></textarea>
-        <div *ngIf="submitted && portfolioForm.controls.description.errors" class="error">
-          <div *ngIf="portfolioForm.controls.description.errors.required">Summary is required</div>
-          <div *ngIf="portfolioForm.controls.description.errors.min">Summary should be a minimum of 30 characters</div>
-          <div *ngIf="portfolioForm.controls.description.errors.max">Summary can have a maximum of 200 characters</div>
-        </div>
-      </label>
-  
-      <label>
-          Theme:
-          <div class="grp">
-              <input type="radio" value="1" formControlName="theme"> <img src="../../assets/bg-1.jpg" width="30" height="30">
-              <input type="radio" value="2" formControlName="theme"> <img src="../../assets/bg-2.jpg" width="30" height="30">
-              <input type="radio" value="3" formControlName="theme"> <img src="../../assets/bg-3.jpg" width="30" height="30">
-              <input type="radio" value="4" formControlName="theme"> <img src="../../assets/bg-4.jpg" width="30" height="30">
-          </div>
-          <div *ngIf="submitted && portfolioForm.controls.theme.errors" class="error">
-            <div *ngIf="portfolioForm.controls.theme.errors.required">Theme selection is required</div>
-          </div>
-        </label>
-  
-      <div formArrayName="skills">
-        <h3>Skills</h3>
-        <button type="button" (click)="addSkill()" class="cta">Add Skill</button><br><br>
-  
-        <div *ngFor="let s of skills.controls; let i=index">
-          <label>
-            <div [formGroupName]="i">
-              <div class="grp-input">
-                <input type="text" formControlName="skillname">
-                <button type="button" (click)="removeSkill(i)" class="cta">Remove Skill</button>
-                <br>
-              </div>
-            </div>
-          </label>
-        </div>
-      </div>
-      <div formArrayName="achievements">
-        <h3>Achievements</h3>
-        <button type="button" (click)="addAchievement()" class="cta">Add Achievement</button><br><br>
-  
-        <div *ngFor="let a of achievements.controls; let i=index">
-          <label>
-            <div [formGroupName]="i">
-              <div class="grp-input">
-                <input type="text" formControlName="achievement" class="len-40">
-                <button type="button" (click)="removeAchievement(i)" class="cta">Remove Achievement</button>
-                <br>
-              </div>
-            </div>
-          </label>
-        </div>
-      </div>
-  
-      <div formArrayName="projects">
-        <h3>Projects</h3>
-        <button type="button" (click)="addProject()" class="cta">Add Project</button><br><br>
-  
-        <div *ngFor="let p of projects.controls; let i=index">
-          <label>
-            <h4>Project {{ (i + 1) }}</h4>
-            <div [formGroupName]="i">
-              Title:
-              <input type="text" formControlName="title">
-              Description:
-              <textarea formControlName="description" rows="7"></textarea>
-              Start Date:
-              <input type="date" formControlName="startDate">
-              End Date:
-              <input type="date" formControlName="endDate">
-              <button type="button" (click)="removeProject(i)" class="cta">Remove Project</button>
-            </div>
-            <hr>
-          </label>
-        </div>
-      </div>
+  <h2>Edit Portfolio</h2>
+
+  <div *ngIf="submitted && success" class="confirmation">
+    <h4>Congratulations! Your profile has been created</h4>
+    Below are the details
+    <p>
       <br>
-      <input type="submit" value="Update" class="cta">
-    </form>
+      <b>Portfolio link: </b> <a href="{{ portfolioLink }}">{{ portfolioLink }}</a>
+      <br>
+      <b>Update link: </b> <a href="{{ portfolioUpdateLink }}">{{ portfolioUpdateLink }}</a>
+    </p>
+    <br>
+    <a href="{{uname}}" class="cta" *ngIf="success">Go to my portfolio</a>
   </div>
+  <div *ngIf="submitted && !success" class="failure">
+    <p> {{ message }} </p>
+  </div>
+
+  <form [formGroup]="portfolioForm" (ngSubmit)="onSubmit()" *ngIf="!success">
+    <label>
+      Name:
+      <input type="text" formControlName="name">
+      <div *ngIf="submitted && portfolioForm.controls.name.errors" class="error">
+        <div *ngIf="portfolioForm.controls.name.errors.required">Your name is required</div>
+      </div>
+    </label>
+
+    <label>
+      User PIN:
+      <input type="text" formControlName="pin">
+      <div *ngIf="submitted && portfolioForm.controls.pin.errors" class="error">
+        <div *ngIf="portfolioForm.controls.pin.errors.required">User PIN is required</div>
+        <div *ngIf="portfolioForm.controls.pin.errors.pattern">User PIN should consist of only 4 numbers</div>
+      </div>
+    </label>
+
+    <label>
+      Subtitle:
+      <input type="text" formControlName="header">
+      <div *ngIf="submitted && portfolioForm.controls.header.errors" class="error">
+        <div *ngIf="portfolioForm.controls.header.errors.required">Subtitle is required</div>
+      </div>
+    </label>
+
+    <label>
+      Summary:
+      <textarea formControlName="description" rows="7"></textarea>
+      <div *ngIf="submitted && portfolioForm.controls.description.errors" class="error">
+        <div *ngIf="portfolioForm.controls.description.errors.required">Summary is required</div>
+        <div *ngIf="portfolioForm.controls.description.errors.min">Summary should be a minimum of 30 characters</div>
+        <div *ngIf="portfolioForm.controls.description.errors.max">Summary can have a maximum of 200 characters</div>
+      </div>
+    </label>
+
+    <label>
+      Theme:
+      <div class="grp">
+        <input type="radio" value="1" formControlName="theme"> <img src="../../assets/bg-1.jpg" width="30" height="30">
+        <input type="radio" value="2" formControlName="theme"> <img src="../../assets/bg-2.jpg" width="30" height="30">
+        <input type="radio" value="3" formControlName="theme"> <img src="../../assets/bg-3.jpg" width="30" height="30">
+        <input type="radio" value="4" formControlName="theme"> <img src="../../assets/bg-4.jpg" width="30" height="30">
+      </div>
+      <div *ngIf="submitted && portfolioForm.controls.theme.errors" class="error">
+        <div *ngIf="portfolioForm.controls.theme.errors.required">Theme selection is required</div>
+      </div>
+    </label>
+
+    <div formArrayName="skills">
+      <h3>Skills</h3>
+      <button type="button" (click)="addSkill()" class="cta">Add Skill</button><br><br>
+
+      <div *ngFor="let s of skills.controls; let i=index">
+        <label>
+          <div [formGroupName]="i">
+            <div class="grp-input">
+              <input type="text" formControlName="skillname">
+              <button type="button" (click)="removeSkill(i)" class="cta">Remove Skill</button>
+              <br>
+            </div>
+          </div>
+        </label>
+      </div>
+    </div>
+    <div formArrayName="achievements">
+      <h3>Achievements</h3>
+      <button type="button" (click)="addAchievement()" class="cta">Add Achievement</button><br><br>
+
+      <div *ngFor="let a of achievements.controls; let i=index">
+        <label>
+          <div [formGroupName]="i">
+            <div class="grp-input">
+              <input type="text" formControlName="achievement" class="len-40">
+              <button type="button" (click)="removeAchievement(i)" class="cta">Remove Achievement</button>
+              <br>
+            </div>
+          </div>
+        </label>
+      </div>
+    </div>
+
+    <div formArrayName="projects">
+      <h3>Projects</h3>
+      <button type="button" (click)="addProject()" class="cta">Add Project</button><br><br>
+
+      <div *ngFor="let p of projects.controls; let i=index">
+        <label>
+          <h4>Project {{ (i + 1) }}</h4>
+          <div [formGroupName]="i">
+            Title:
+            <input type="text" formControlName="title">
+            Description:
+            <textarea formControlName="description" rows="7"></textarea>
+            Start Date:
+            <input type="date" formControlName="startDate">
+            End Date:
+            <input type="date" formControlName="endDate">
+            <button type="button" (click)="removeProject(i)" class="cta">Remove Project</button>
+          </div>
+          <hr>
+        </label>
+      </div>
+    </div>
+    <br>
+    <input type="submit" value="Update" class="cta">
+  </form>
+</div>

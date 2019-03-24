@@ -16,6 +16,9 @@ export class CreatePortfolioComponent implements OnInit {
   success = false;
   message: string;
   uname: string;
+  portfolioLink: string;
+  portfolioUpdateLink: string;
+  pin: number;
 
   constructor(private formBuilder: FormBuilder, private data: DataService) { }
 
@@ -110,7 +113,9 @@ export class CreatePortfolioComponent implements OnInit {
         if (p.id > 0) {
           this.success = true;
           this.message = 'Profile created successfully';
-          this.uname = 'http://localhost:4200/portfolio/' + p.uname;
+          this.portfolioLink = 'http://localhost:4200/portfolio/' + p.uname;
+          this.portfolioUpdateLink = this.portfolioLink + '/edit';
+          this.pin = p.pin;
         }
       }
     }, (err: HttpErrorResponse) => {

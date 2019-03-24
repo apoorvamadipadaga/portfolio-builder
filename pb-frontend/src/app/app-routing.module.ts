@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'home', component: HomeComponent },
   { path: 'create-portfolio', component: CreatePortfolioComponent},
-  { path: 'edit-portfolio/:uname', component: EditPortfolioComponent},
+  { path: 'portfolio/:uname/edit', component: EditPortfolioComponent},
   { path: 'portfolio/:uname', component: PortfolioComponent},
   { path: 'instructions', component: AboutComponent}
 ];
