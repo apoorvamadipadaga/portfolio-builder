@@ -5,6 +5,14 @@ body, html {
     margin: 0 auto;
 }
 
+body {  
+    background-image: url('./assets/bgh.jpg'); 
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
 body {
     font-family: 'Roboto';
     font-size: 18px;
