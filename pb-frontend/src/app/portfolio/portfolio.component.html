@@ -1,11 +1,11 @@
 <div class="container portfolio">
   <div class="phead">
     <div class="ptitle">{{ portfolio.name }}</div>
-    <div class="pstitle">1232 123 123 12</div>
+    <div class="pstitle">{{ portfolio.header }}</div>
   </div>
   <div class="pbody">
     <div class="description">
-      This is one long description  This is one long description. This is one long description.This is one long description.This is one long description.This is one long description.
+      {{ portfolio.description }}
     </div>
     <div class="section">
       <div class="sheader">
@@ -13,8 +13,9 @@
       </div>
       <div class="sbody">
         <ul>
-          <li>C#</li>
-          <li>Java</li>
+          <li *ngFor="let s of portfolio.skills">
+            {{ s.skillname }}
+          </li>
         </ul>
       </div>
     </div>
@@ -24,8 +25,9 @@
         </div>
         <div class="sbody">
           <ul>
-            <li>Ach #1</li>
-            <li>Ach #2</li>
+              <li *ngFor="let a of portfolio.achievements">
+                {{ a.achievement }}
+              </li>
           </ul>
         </div>
     </div>
@@ -33,22 +35,14 @@
         <div class="sheader">
           Projects
         </div>
-        <div class="sbody">
+        <div class="sbody" *ngFor="let p of portfolio.projects">
           <div class="proj">
-            <div class="ptitle">Proj title #1</div>
-            <div class="pdescription">This is one long description  This is one long description. This is one long description.This is one long description.This is one long description.This is one long description.</div>
-            <div class="pdate">Start Date: 29/2/3199</div>
-            <div class="pdate">End Date: 29/2/3199</div>
+            <div class="ptitle">{{ p.title }}</div>
+            <div class="pdescription">{{ p.description }}</div>
+            <div class="pdate">Start Date: {{ p.startDate }}</div>
+            <div class="pdate">End Date: {{ p.endDate }}</div>
           </div>
         </div>
-        <div class="sbody">
-            <div class="proj">
-              <div class="ptitle">Proj title #1</div>
-              <div class="pdescription">This is one long description  This is one long description. This is one long description.This is one long description.This is one long description.This is one long description.</div>
-              <div class="pdate">Start Date: 29/2/3199</div>
-              <div class="pdate">End Date: 29/2/3199</div>
-            </div>
-          </div>
     </div>
   </div>
 </div>
