@@ -13,6 +13,7 @@ export class Portfolio implements Deserializable {
     skills: Skill[];
     projects: Project[];
     achievements: Achievement[];
+    theme: number;
 
     deserialize(input: any) {
         Object.assign(this, input);

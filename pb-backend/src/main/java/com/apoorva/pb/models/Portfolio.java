@@ -20,6 +20,7 @@ public class Portfolio {
     private String name;
     private String header;
     private String description;
+    private Integer theme;
     @OneToMany(mappedBy = "portfolio", cascade=CascadeType.ALL)
     private List<Achievement> achievements;
     @OneToMany(mappedBy = "portfolio", cascade=CascadeType.ALL)
@@ -137,7 +138,20 @@ public class Portfolio {
         projects.forEach(p -> p.setPortfolio(this));
         this.projects = projects;
     }
+    /**
+     * @return the theme
+     */
+    public Integer getTheme() {
+        return theme;
+    }
 
+    /**
+     * @param theme the theme to set
+     */
+    public void setTheme(Integer theme) {
+        this.theme = theme;
+    }
+    
     public Portfolio(){
 
     }
@@ -147,14 +161,18 @@ public class Portfolio {
         Integer pin,
         String name,
         String header,
-        String description){
+        String description,
+        Integer theme){
             this.id=id;
             this.uname=uname;
             this.pin=pin;
             this.name=name;
             this.header=header;
             this.description=description;
+            this.theme=theme;
     }
+
+
 }
 
     
