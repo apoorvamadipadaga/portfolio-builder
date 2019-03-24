@@ -10,4 +10,6 @@ public interface PortfolioRepository extends JpaRepository<Portfolio, Integer> {
 
     Optional<Portfolio> findByUname(String uname);
 
+    Optional<Portfolio> findByUnameAndPin(String uname, int pin);
+
 }
