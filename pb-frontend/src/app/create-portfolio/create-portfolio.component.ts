@@ -24,7 +24,7 @@ export class CreatePortfolioComponent implements OnInit {
       name: ['', Validators.required],
       uname: ['', Validators.required],
       pin: ['', [Validators.required, Validators.pattern('[0-9]{4}')]],
-      description: ['', Validators.required],
+      description: ['', [Validators.required, Validators.min(30), Validators.max(200)]],
       skills: this.formBuilder.array([
       ]),
       achievements: this.formBuilder.array([
@@ -71,12 +71,24 @@ export class CreatePortfolioComponent implements OnInit {
     this.skills.push(this.createSkill());
   }
 
+  removeSkill(i: number) {
+    this.skills.removeAt(i);
+  }
+
   addAchievement() {
     this.achievements.push(this.createAchievement());
+  }
+  
+  removeAchievement(i: number) {
+    this.achievements.removeAt(i);
   }
 
   addProject() {
     this.projects.push(this.createProject());
+  }
+
+  removeProject(i: number) {
+    this.projects.removeAt(i);
   }
 
   onSubmit() {

@@ -4,7 +4,7 @@
 
   <div *ngIf="submitted">
     <p>{{ message }}</p>
-    <a href="{{uname}}" class="cta">Go to my portfolio</a>
+    <a href="{{uname}}" class="cta" *ngIf="success">Go to my portfolio</a>
   </div>
 
   <form [formGroup]="portfolioForm" (ngSubmit)="onSubmit()" *ngIf="!success">
@@ -38,6 +38,8 @@
       <textarea formControlName="description" rows="7"></textarea>
       <div *ngIf="submitted && portfolioForm.controls.description.errors" class="error">
         <div *ngIf="portfolioForm.controls.description.errors.required">Summary is required</div>
+        <div *ngIf="portfolioForm.controls.description.errors.min">Summary should be a minimum of 30 characters</div>
+        <div *ngIf="portfolioForm.controls.description.errors.max">Summary can have a maximum of 200 characters</div>
       </div>
     </label>
 
@@ -48,7 +50,11 @@
       <div *ngFor="let s of skills.controls; let i=index">
         <label>
           <div [formGroupName]="i">
-            <input type="text" formControlName="skillname">
+            <div class="grp-input">
+              <input type="text" formControlName="skillname">
+              <button type="button" (click)="removeSkill(i)" class="cta">Remove Skill</button>
+              <br>
+            </div>
           </div>
         </label>
       </div>
@@ -60,7 +66,11 @@
       <div *ngFor="let a of achievements.controls; let i=index">
         <label>
           <div [formGroupName]="i">
-            <input type="text" formControlName="achievement">
+            <div class="grp-input">
+              <input type="text" formControlName="achievement" class="len-50">
+              <button type="button" (click)="removeAchievement(i)" class="cta">Remove Achievement</button>
+              <br>
+            </div>
           </div>
         </label>
       </div>
@@ -82,6 +92,7 @@
             <input type="date" formControlName="startDate">
             End Date:
             <input type="date" formControlName="endDate">
+            <button type="button" (click)="removeProject(i)" class="cta">Remove Project</button>
           </div>
           <hr>
         </label>

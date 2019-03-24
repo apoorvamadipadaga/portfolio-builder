@@ -22,6 +22,25 @@ textarea {
     resize: none;
 }
 
+.grp-input {
+    display: block;
+    height: 3em;
+
+    input {
+        display: inline-block;
+        width: 30em;
+    }
+
+    button {
+        display: inline-block;
+        margin-left: 1em;
+    }
+
+    .len-50 {
+        width: 50em;
+    }
+}
+
 .cta {
     background: rgb(43, 128, 255);
     border: none;
