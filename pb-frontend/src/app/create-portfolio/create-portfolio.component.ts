@@ -15,6 +15,7 @@ export class CreatePortfolioComponent implements OnInit {
   submitted = false;
   success = false;
   message: string;
+  uname: string;
 
   constructor(private formBuilder: FormBuilder, private data: DataService) { }
 
@@ -94,7 +95,8 @@ export class CreatePortfolioComponent implements OnInit {
         var p = new Portfolio().deserialize(data);
         if (p.id > 0) {
           this.success = true;
-          this.message = 'Profile created successfully. Use this link: http://localhost:4200/portfolio/' + p.uname;
+          this.message = 'Profile created successfully';
+          this.uname = 'http://localhost:4200/portfolio/' + p.uname;
         }
       }
     }, (err: HttpErrorResponse) => {

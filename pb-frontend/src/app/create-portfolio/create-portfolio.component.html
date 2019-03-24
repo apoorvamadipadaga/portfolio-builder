@@ -2,7 +2,10 @@
 
   <h1>Create Portfolio</h1>
 
-  <h5 *ngIf="submitted">{{ message }}</h5>
+  <div *ngIf="submitted">
+    <p>{{ message }}</p>
+    <a href="{{uname}}" class="cta">Go to my portfolio</a>
+  </div>
 
   <form [formGroup]="portfolioForm" (ngSubmit)="onSubmit()" *ngIf="!success">
     <label>
