@@ -8,7 +8,8 @@ import { PortfolioComponent } from './portfolio/portfolio.component';
 import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent},
+  { path: 'home', component: HomeComponent },
   { path: 'create-portfolio', component: CreatePortfolioComponent},
   { path: 'edit-portfolio/:uname', component: EditPortfolioComponent},
   { path: 'portfolio/:uname', component: PortfolioComponent},

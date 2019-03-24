@@ -108,7 +108,7 @@ export class CreatePortfolioComponent implements OnInit {
           //Backend returns unsuccessful response codes such as 404, 500 etc.
           console.log('Backend returned status code: ', err.status);
           console.log('Response body:', err.error);
-          if(err.message.indexOf("ConstraintViolationException") > 0) {
+          if(err.message.includes("ConstraintViolationException")) {
             this.message = 'Username already exists';
           }
           else {
