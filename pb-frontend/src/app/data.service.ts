@@ -17,4 +17,8 @@ export class DataService {
   createPortfolio(portfolio: Portfolio) {
     return this.http.post("http://localhost:8080/api/portfolios", portfolio);
   }
+
+  updatePortfolio(portfolio: Portfolio, uname: string) {
+    return this.http.put("http://localhost:8080/api/portfolios/" + uname, portfolio);
+  }
 }
