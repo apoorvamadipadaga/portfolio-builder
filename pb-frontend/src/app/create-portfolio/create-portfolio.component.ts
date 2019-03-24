@@ -116,6 +116,7 @@ export class CreatePortfolioComponent implements OnInit {
           this.portfolioLink = 'http://localhost:4200/portfolio/' + p.uname;
           this.portfolioUpdateLink = this.portfolioLink + '/edit';
           this.pin = p.pin;
+          this.uname = p.uname;
         }
       }
     }, (err: HttpErrorResponse) => {

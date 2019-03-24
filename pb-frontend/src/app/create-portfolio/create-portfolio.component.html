@@ -14,7 +14,7 @@
       <b>PIN: </b> {{ pin }}
     </p>
     <br>
-    <a href="{{uname}}" class="cta" *ngIf="success">Go to my portfolio</a>
+    <a href="/portfolio/{{uname}}" class="cta" *ngIf="success">Go to my portfolio</a>
   </div>
   <div *ngIf="submitted && !success" class="failure">
     <p> {{ message }} </p>

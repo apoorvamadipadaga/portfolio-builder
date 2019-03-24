@@ -168,6 +168,7 @@ export class EditPortfolioComponent implements OnInit {
           this.message = 'Profile updated successfully';
           this.portfolioLink = 'http://localhost:4200/portfolio/' + p.uname;
           this.portfolioUpdateLink = this.portfolioLink + '/edit';
+          this.uname = p.uname;
         }
       }
     }, (err: HttpErrorResponse) => {

@@ -3,7 +3,7 @@
   <h2>Edit Portfolio</h2>
 
   <div *ngIf="submitted && success" class="confirmation">
-    <h4>Congratulations! Your profile has been created</h4>
+    <h4>Congratulations! Your profile has been updated</h4>
     Below are the details
     <p>
       <br>
@@ -12,7 +12,7 @@
       <b>Update link: </b> <a href="{{ portfolioUpdateLink }}">{{ portfolioUpdateLink }}</a>
     </p>
     <br>
-    <a href="{{uname}}" class="cta" *ngIf="success">Go to my portfolio</a>
+    <a href="/portfolio/{{uname}}" class="cta" *ngIf="success">Go to my portfolio</a>
   </div>
   <div *ngIf="submitted && !success" class="failure">
     <p> {{ message }} </p>
