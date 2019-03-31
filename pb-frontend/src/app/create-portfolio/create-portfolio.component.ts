@@ -24,8 +24,8 @@ export class CreatePortfolioComponent implements OnInit {
 
   ngOnInit() {
     this.portfolioForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      uname: ['', Validators.required],
+      name: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
+      uname: ['', [Validators.required, Validators.pattern('[a-zA-Z ]*')]],
       header: ['', Validators.required],
       theme: ['', [Validators.required, Validators.pattern('[1-4]{1}')]],
       pin: ['', [Validators.required, Validators.pattern('[0-9]{4}')]],
@@ -100,6 +100,7 @@ export class CreatePortfolioComponent implements OnInit {
     this.submitted = true;
 
     if (this.portfolioForm.invalid) {
+      this.message = 'There are errors while submitting the form';
       return;
     }
 

@@ -11,6 +11,7 @@ import { EditPortfolioComponent } from './edit-portfolio/edit-portfolio.componen
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
+import { DeletePortfolioComponent } from './delete-portfolio/delete-portfolio.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AboutComponent } from './about/about.component';
     EditPortfolioComponent,
     PortfolioComponent,
     HomeComponent,
-    AboutComponent
+    AboutComponent,
+    DeletePortfolioComponent
   ],
   imports: [
     BrowserModule,

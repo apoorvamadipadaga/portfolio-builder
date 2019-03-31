@@ -31,21 +31,17 @@ services:
       - MYSQL_PORT=3306
       - MYSQL_USERNAME=pbuser
       - MYSQL_PASSWORD=password
-  # web:
-  #   restart: always
-  #   build: ./pb-frontend
-  #   working_dir: /app
-  #   volumes:
-  #     - ./pb-frontend:/app
-  #   expose:
-  #     - '4200'
-  #     - '49153'
-  #   ports:
-  #     - '4200:4200'
-  #     - '4201:49153'
-  #   depends_on:
-  #     - api
-  #   command: "npm start"
-  #   environment:
-  #     - API_HOST=api
-  #     - API_PORT=8080
+  web:
+    restart: always
+    build: ./pb-frontend
+    working_dir: /app
+    expose:
+      - '80'
+    ports:
+      - '80:80'
+    depends_on:
+      - api
+    command: ["nginx", "-g", "daemon off;"]
+    environment:
+      - API_HOST=api
+      - API_PORT=8080

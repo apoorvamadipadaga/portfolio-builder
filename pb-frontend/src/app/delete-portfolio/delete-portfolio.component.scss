@@ -1,0 +1,90 @@
+h2 {
+    font-size: 1.8em;
+}
+
+label {
+    display: block;
+    
+    input, textarea {
+        display: block;
+        width: 50%;
+        margin-bottom: 20px;
+        padding: 1em;
+    }
+
+    .error {
+        margin-top: -20px;
+        background: yellow;
+        padding: .5em;
+        display: inline-block;
+        font-size: .9em;
+        margin-bottom: 20px;
+    }
+}
+
+.confirmation {
+    text-align: center;
+
+    p {
+        text-align: left;
+        margin-left: 14em;
+    }
+}
+
+.failure {
+    padding: 1em;
+    background-color: red;
+    color: white;
+    margin: 1em;
+}
+
+textarea {
+    resize: none;
+}
+
+.grp-input {
+    display: block;
+    height: 3em;
+
+    input {
+        display: inline-block;
+        width: 30em;
+    }
+
+    button {
+        display: inline-block;
+        margin-left: 1em;
+    }
+
+    .len-40 {
+        width: 40em;
+    }
+}
+
+.grp {
+    display: block;
+    height: 3em;
+    padding-bottom: 2em;
+
+    input {
+        display: inline-block;
+        width: 2em;
+        height: 1.2em;
+    }
+
+    img {
+        padding-top: 1em;
+        padding-right: 2em;
+    }
+}
+
+.cta {
+    background: rgb(43, 128, 255);
+    border: none;
+    color: white;
+
+    text-transform: uppercase;
+    border-radius: 4px;
+    padding: 1em;
+    cursor: pointer;
+}

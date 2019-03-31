@@ -1,0 +1,25 @@
+<div class="container wrapper">
+
+  <h2>Delete Portfolio</h2>
+
+  <div *ngIf="submitted && success" class="confirmation">
+    <h4>Your portfolio has been deleted!</h4>
+    <br>
+    <a href="/" class="cta" *ngIf="success">Go to home page</a>
+  </div>
+  <div *ngIf="submitted && !success" class="failure">
+    <p> {{ message }} </p>
+  </div>
+
+  <form [formGroup]="portfolioForm" (ngSubmit)="onSubmit()" *ngIf="!success">
+    <label>
+      User PIN:
+      <input type="text" formControlName="pin">
+      <div *ngIf="submitted && portfolioForm.controls.pin.errors" class="error">
+        <div *ngIf="portfolioForm.controls.pin.errors.required">User PIN is required</div>
+        <div *ngIf="portfolioForm.controls.pin.errors.pattern">User PIN should consist of only 4 numbers</div>
+      </div>
+    </label>
+    <input type="submit" value="Delete Portfolio" class="cta">
+  </form>
+</div>

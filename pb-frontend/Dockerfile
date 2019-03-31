@@ -1,11 +1,12 @@
-FROM node:alpine
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev vim
-ENV NODE_ROOT /app
-# Install all the packages
-RUN npm install -g @angular/cli
-RUN yarn install
-# Uncomment this if you went with Option #2 in Step #2 (Windows Only)
-# RUN npm rebuild node-sass --force
-# The default port from ng serve (4200)
-# and 49153 for Webpack Hot Module Reload
-EXPOSE 4200 49153
+FROM node:11.12.0-alpine as builder
+WORKDIR /app
+COPY package.json package-lock.json /app/
+RUN npm install
+COPY . .
+RUN npm run ng build -- --prod --output-path=dist
+
+FROM nginx:1.14.1-alpine
+COPY ./.nginx/default.conf /etc/nginx/conf.d/
+RUN rm -rf /usr/share/nginx/html/*
+RUN chown nginx:nginx /usr/share/nginx/html/
+COPY --from=builder /app/dist /usr/share/nginx/html

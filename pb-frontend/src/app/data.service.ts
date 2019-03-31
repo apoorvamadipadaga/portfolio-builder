@@ -21,4 +21,8 @@ export class DataService {
   updatePortfolio(portfolio: Portfolio, uname: string) {
     return this.http.put("http://localhost:8080/api/portfolios/" + uname, portfolio);
   }
+
+  deletePortfolio(pin: Number, uname: string) {
+    return this.http.delete("http://localhost:8080/api/portfolios/" + uname + "/" + pin);
+  }
 }

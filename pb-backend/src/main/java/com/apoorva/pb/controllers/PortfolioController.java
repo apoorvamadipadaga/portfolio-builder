@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -52,5 +53,15 @@ public class PortfolioController {
             return Optional.of(portfolio);
         }
         return null;
+    }
+
+    @DeleteMapping("/api/portfolios/{uname}/{pin}")
+    public @ResponseBody boolean deletePortfolio(@PathVariable String uname, @PathVariable int pin) {
+        Optional<Portfolio> result = portfolioRepository.findByUnameAndPin(uname, pin); 
+        if(result.isPresent()) {
+            portfolioRepository.delete(result.get());            
+            return true;
+        }
+        return false;
     }
 }

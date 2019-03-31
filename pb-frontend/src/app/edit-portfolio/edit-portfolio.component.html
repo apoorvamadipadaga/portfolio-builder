@@ -24,6 +24,7 @@
       <input type="text" formControlName="name">
       <div *ngIf="submitted && portfolioForm.controls.name.errors" class="error">
         <div *ngIf="portfolioForm.controls.name.errors.required">Your name is required</div>
+        <div *ngIf="portfolioForm.controls.name.errors.pattern">Name should consist of alphabets</div>
       </div>
     </label>
 
